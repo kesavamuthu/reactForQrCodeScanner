@@ -12,3 +12,8 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+.placing-reg-button {
+  display: inline !important;
+  right: -14%;
+}
