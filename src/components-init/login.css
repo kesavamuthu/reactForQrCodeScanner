@@ -1,0 +1,14 @@
+#example2 {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #6610f2;
+}
+
+.vertical-center {
+  /* not working may be it's not getting applied successfully*/
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
