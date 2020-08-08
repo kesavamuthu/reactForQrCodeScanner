@@ -8,8 +8,7 @@ import Login from "./components-init/login";
 function App() {
   return (
     <Router>
-      <div>
-        {/* <nav>
+      {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -22,18 +21,17 @@ function App() {
             </li>
           </ul>
         </nav> */}
-        <Switch>
-          <Route exact path="/">
-            <Product />
-          </Route>
-          <Route path="/manipulator">
-            <Manipulator />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/">
+          <Product />
+        </Route>
+        <Route path="/manipulator">
+          <Manipulator />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+      </Switch>
     </Router>
   );
 }

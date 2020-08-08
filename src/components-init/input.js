@@ -6,6 +6,7 @@ function InputProvider(props) {
   let inputs = props.register[0];
   let lables = props.register[1];
   let placeHolders = props.register[2];
+  let patterns = props.register[3];
   let datas = props.data;
   let names = Object.keys(datas);
   console.log(names);
@@ -18,6 +19,7 @@ function InputProvider(props) {
         name={names[i]}
         value={datas[names[i]]}
         onChange={props.onChange}
+        pattern={patterns[i]}
       />
     </Form.Group>
   ));

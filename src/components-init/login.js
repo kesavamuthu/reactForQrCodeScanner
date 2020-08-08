@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import Util from "../utility";
 import InputProvider from "./input";
 import "./login.css";
 import util from "../utility";
@@ -9,7 +8,12 @@ const init = [
   ["email", "password"],
   ["Enter email", "Password"],
   ["Enter email", "Password"],
+  [
+    "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
+    "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
+  ],
 ];
+// escaping \ character in string make these things to work
 let flag = true;
 let toggleValue = "Register";
 function Login() {
@@ -17,11 +21,13 @@ function Login() {
     [...init[0]],
     [...init[1]],
     [...init[2]],
+    [...init[3]],
   ]);
   const [data, changeData] = useState({ email: "", password: "" });
   let inputs = register[0];
   let placeHolders = register[1];
   let lables = register[2];
+  let patterns = register[3];
 
   return (
     <Container style={flag ? { marginTop: "14%" } : { marginTop: "5%" }}>
@@ -66,20 +72,28 @@ function Login() {
     util.requestMaker(data, "post", path).then((e) => {
       console.log(e);
       console.log(e.data.tok);
+      loginSetter({ email: data.email, password: data.password });
     });
   }
 
   function registerSetter(event) {
-    flag = !flag;
     if (event.target.checked) {
+      flag = false;
       toggleValue = "Login";
       inputs.unshift("text");
       placeHolders.unshift("First Name");
       lables.unshift("First Name");
+      patterns.unshift("^[A-Za-z]+$");
       inputs.push(...["password", "tel"]);
       placeHolders.push(...["Retype Password", "Mobile number"]);
       lables.push(...["Retype Password", "Mobile number"]);
-      setShow([inputs, placeHolders, lables]);
+      patterns.push(
+        ...[
+          "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
+          "^(\\+\\d{1,3}[- ]?)?\\d{10}$",
+        ]
+      );
+      setShow([inputs, placeHolders, lables, patterns]);
       changeData({
         firstName: "",
         email: "",
@@ -89,12 +103,18 @@ function Login() {
       });
       return;
     }
+    loginSetter({ email: "", password: "" });
+  }
+
+  function loginSetter({ email, password }) {
+    flag = true;
     inputs = [...init[0]];
     placeHolders = [...init[1]];
     lables = [...init[2]];
+    patterns = [...init[3]];
     toggleValue = "Register";
-    setShow([inputs, placeHolders, lables]);
-    changeData({ email: "", password: "" });
+    setShow([inputs, placeHolders, lables, patterns]);
+    changeData({ email, password });
   }
 
   function inputParser(event) {

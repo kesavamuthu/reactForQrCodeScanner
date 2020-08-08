@@ -17,3 +17,7 @@
   display: inline !important;
   right: -14%;
 }
+
+input:invalid {
+  border: red solid 3px;
+}
