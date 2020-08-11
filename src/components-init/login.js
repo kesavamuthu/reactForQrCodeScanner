@@ -30,10 +30,9 @@ function Login() {
   let patterns = register[3];
 
   return (
-    <Container style={flag ? { marginTop: "14%" } : { marginTop: "5%" }}>
-      <Row>
-        <Col></Col>
-        <Col md={5}>
+    <Container className="vh-100">
+      <Row className="my-auto vh-100">
+        <Col md={5} className="my-auto mx-auto">
           <Form id="example2">
             <img
               src={dummyImage}
@@ -60,7 +59,6 @@ function Login() {
             </div>
           </Form>
         </Col>
-        <Col></Col>
       </Row>
     </Container>
   );

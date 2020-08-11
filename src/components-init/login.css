@@ -18,6 +18,6 @@
   right: -14%;
 }
 
-input:invalid {
+.input-user:invalid {
   border: red solid 3px;
 }

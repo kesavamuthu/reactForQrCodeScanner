@@ -1,8 +1,8 @@
 import React from "react";
-import Manipulator from "./components-excel/manipulator";
+import Home from "./components-main/homepage";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Product from "./components-product-form/productParent";
+// import Product from "./components-product-form/productParent";
 import Login from "./components-init/login";
 
 function App() {
@@ -23,10 +23,10 @@ function App() {
         </nav> */}
       <Switch>
         <Route exact path="/">
-          <Product />
+          <Login />
         </Route>
-        <Route path="/manipulator">
-          <Manipulator />
+        <Route path="/home">
+          <Home />
         </Route>
         <Route path="/login">
           <Login />

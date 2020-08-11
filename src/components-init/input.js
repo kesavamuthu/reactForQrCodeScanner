@@ -20,6 +20,7 @@ function InputProvider(props) {
         value={datas[names[i]]}
         onChange={props.onChange}
         pattern={patterns[i]}
+        className={"input-user"}
       />
     </Form.Group>
   ));

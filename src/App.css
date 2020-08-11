@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.mine > input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mine {
+  background-color: tomato;
+}
+
+.jumbotron-what {
+  background-color: aqua;
+}
+
+body {
+  background-color: blueviolet !important;
+}
